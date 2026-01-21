@@ -23,7 +23,8 @@ import { environment } from 'src/environments/environment.development';
       name: 'NgRx Store DevTools',
       maxAge: 25,
       logOnly: environment.production,
-    })
+    }),
+
   ],
   providers: [],
   bootstrap: [AppComponent],
