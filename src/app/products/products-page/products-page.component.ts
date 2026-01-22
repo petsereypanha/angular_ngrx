@@ -25,19 +25,10 @@ export class ProductsPageComponent {
   showProductCode$ = this.store.select(selectProductsShowProductCode);
   errorMessage$ = this.store.select(selectProductsErrorMessage)
 
-  constructor(private productsService: ProductsService, private store: Store) {}
+  constructor( private store: Store) {}
 
   ngOnInit() {
-    this.getProducts();
-  }
-
-  getProducts() {
     this.store.dispatch(ProductsPageActions.loadProducts());
-    this.productsService.getAll().subscribe((products) => {
-      this.store.dispatch(
-        ProductsAPIActions.productsLoadedSuccess({ products })
-      );
-    });
   }
 
   toggleShowProductCode() {
