@@ -11,6 +11,7 @@ import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from 'src/environments/environment.development';
 import { EffectsModule } from '@ngrx/effects';
+import {StoreRouterConnectingModule} from "@ngrx/router-store";
 
 @NgModule({
   declarations: [AppComponent, HomeComponent],
@@ -26,6 +27,7 @@ import { EffectsModule } from '@ngrx/effects';
       logOnly: environment.production,
     }),
     EffectsModule.forRoot([]),
+    StoreRouterConnectingModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent],

@@ -1,10 +1,6 @@
 import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { ProductsService } from '../products.service';
-import {
-  ProductsAPIActions,
-  ProductsPageActions,
-} from '../state/products.actions';
+import { ProductsPageActions } from '../state/products.actions';
 import {
   selectProducts,
   selectProductsErrorMessage,
@@ -21,15 +17,11 @@ import {
 export class ProductsPageComponent {
   products$ = this.store.select(selectProducts);
   total$ = this.store.select(selectProductsTotal);
-  loading$ = this.store.select(selectProductsLoading);
   showProductCode$ = this.store.select(selectProductsShowProductCode);
-  errorMessage$ = this.store.select(selectProductsErrorMessage)
+  loading$ = this.store.select(selectProductsLoading);
+  errorMessage$ = this.store.select(selectProductsErrorMessage);
 
-  constructor( private store: Store) {}
-
-  ngOnInit() {
-    this.store.dispatch(ProductsPageActions.loadProducts());
-  }
+  constructor(private store: Store) {}
 
   toggleShowProductCode() {
     this.store.dispatch(ProductsPageActions.toggleShowProductCode());
